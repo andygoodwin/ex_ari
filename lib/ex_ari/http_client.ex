@@ -75,7 +75,9 @@ defmodule ARI.HTTPClient do
         Mint.HTTP.close(conn)
         {from, conn, res}
       end
-
+      defp handle_responses(conn, _, {from, _c, res} = req) do
+        {from, conn, res}
+      end
       defp handle_json(<<>>) do
         nil
       end
