@@ -249,7 +249,17 @@ defmodule ARI.Stasis do
 
     {:ok, state}
   end
+  
+  defp handle_payload(%{peer: %{id: id}} = payload, state) do
+    debug("Received Event: #{inspect(payload)}")
 
+    id
+    |> ChannelRegistrar.get_channel()
+    |> do_send({:ari, payload})
+
+    {:ok, state}
+  end
+  
   defp handle_payload(payload, state) do
     Logger.warn("Unhandled Payload: #{inspect(payload)}")
     {:ok, state}
