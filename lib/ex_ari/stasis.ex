@@ -210,7 +210,7 @@ defmodule ARI.Stasis do
     {:ok, state}
   end
 
-  defp handle_payload(%{application: "router"<>_, type: "StasisEnd", channel: %{id: id}}, state) do
+  defp handle_payload(%{application: "router", type: "StasisEnd", channel: %{id: id}}, state) do
     debug("Received Router Stasis End")
     handle_stasis_end(id, false, state)
   end
