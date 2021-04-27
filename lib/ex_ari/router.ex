@@ -87,9 +87,7 @@ defmodule ARI.Router do
 
     {:noreply, state}
   end
-  def handle_call(action, _from, state)do
-    {:reply, :ok, state}
-  end
+
   @spec state(String.t(), String.t(), list(), map(), map()) :: Stasis.channel_state()
   def state(channel, caller, [], event, app_state) do
     Logger.debug("Starting router move: #{channel} - #{caller} - #{inspect(event)}")

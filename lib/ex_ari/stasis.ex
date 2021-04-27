@@ -280,7 +280,7 @@ defmodule ARI.Stasis do
           Logger.debug("Removed Channel: #{id}")
           ChannelRegistrar.delete_channel(id)
         end
-        GenServer.call(pid, :end_call)
+
         DynamicSupervisor.terminate_child(
           state.channel_supervisor,
           pid
