@@ -186,7 +186,7 @@ defmodule ARI.HTTP.Channels do
   end
 
   def handle_call({:create, payload}, from, state) do
-    {:noreply, request("POST", "/create?#{encode_params(payload)}", from, state)}
+    {:noreply, request("POST", "/create", from, state, Jason.encode!(payload))}
   end
 
   def handle_call({:hangup, id}, from, state) do
