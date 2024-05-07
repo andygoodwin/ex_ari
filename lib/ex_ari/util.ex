@@ -1,6 +1,6 @@
 defmodule ARI.Util do
   @moduledoc "Utility functions for ARI"
-  use Bitwise
+  import Bitwise
 
   def config_diff(old_config, new_config) do
     Enum.filter(new_config, fn %{value: value} = field ->
